@@ -42,6 +42,7 @@ Reglas principales:
 - [x] Confirmado que la carpeta inicial solo contiene los documentos de requisitos y contexto.
 - [x] Creada esta bitácora de trabajo.
 - [x] Creado el esqueleto modular de Ktor: configuración, rutas, recursos estáticos y configuración de entorno.
+- [x] Extensiones recomendadas instaladas por el estudiante según confirmación: REST Client, Prettier, Docker y las demás seleccionadas.
 - [ ] Confirmar con el docente que Kotlin no se enseña en la carrera.
 - [ ] Registrar el stack con el docente.
 - [ ] Crear el proyecto base de Ktor y verificar que arranca.
@@ -123,6 +124,18 @@ Solo se instalará una extensión de Kotlin: la oficial o, si falla, `fwcd.kotli
 - **Docker Desktop:** prueba el empaquetado antes de Render.
 - **Neon:** proporciona PostgreSQL persistente.
 - **Render:** publica el servicio web.
+
+### Aclaración importante: Kotlin necesita Java
+
+El lenguaje del proyecto sigue siendo **Kotlin**. La instrucción `java -version` no significa que el proyecto cambió a Java. Kotlin/JVM se compila y se ejecuta sobre la **JVM** (Java Virtual Machine), y el **JDK** proporciona esa máquina virtual, el compilador y las herramientas que Gradle necesita.
+
+Se instalará **JDK 21 LTS**, preferiblemente Eclipse Temurin. Después de instalarlo hay que cerrar y volver a abrir PowerShell y VS Code, y comprobar:
+
+```powershell
+java -version
+```
+
+El resultado esperado debe mencionar Java 21. Docker Desktop es independiente: se usará más adelante para construir y probar el contenedor del despliegue.
 
 ## 6. Kotlin explicado desde cero
 
