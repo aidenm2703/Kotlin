@@ -23,11 +23,17 @@ Reglas principales:
 | Lenguaje | Kotlin | Lenguaje JVM moderno, seguro frente a muchos errores de valores nulos y adecuado para backend. |
 
 | Framework web | Ktor | Framework ligero de Kotlin para crear servidores y APIs. |
+
 | Base de datos | PostgreSQL en Neon | Persistencia para que los datos sobrevivan a reinicios y despliegues. |
+
 | Hosting | Render | Publicación de la aplicación mediante Docker. |
+
 | Frontend | HTML, CSS y JavaScript | Ktor servirá la interfaz web y los recursos estáticos. |
+
 | Editor | Visual Studio Code | Herramienta indicada por el contexto del ejercicio. |
+
 | Construcción | Gradle Wrapper | Permite ejecutar Gradle sin instalarlo globalmente. |
+
 | Control de versiones | Git y GitHub | Registra la historia y publica el código. |
 
 ## 3. Estado actual
@@ -35,6 +41,7 @@ Reglas principales:
 - [x] Requisitos y contexto recibidos y revisados.
 - [x] Confirmado que la carpeta inicial solo contiene los documentos de requisitos y contexto.
 - [x] Creada esta bitácora de trabajo.
+- [x] Creado el esqueleto modular de Ktor: configuración, rutas, recursos estáticos y configuración de entorno.
 - [ ] Confirmar con el docente que Kotlin no se enseña en la carrera.
 - [ ] Registrar el stack con el docente.
 - [ ] Crear el proyecto base de Ktor y verificar que arranca.
@@ -46,6 +53,17 @@ Reglas principales:
 - [ ] Crear las tres pantallas y sus estados visuales.
 - [ ] Crear pruebas, seed, Dockerfile y despliegue.
 - [ ] Completar README, ficha de investigación y reflexión.
+
+### Estructura modular inicial
+
+```text
+src/main/kotlin/com/aidenmontero/reservas/
+├── Application.kt              # Punto de entrada y composición de módulos
+├── config/                     # HTTP, logs, errores y JSON
+└── routes/                     # Endpoints HTTP y archivos estáticos
+```
+
+Las próximas carpetas serán `domain/` para modelos y reglas, `persistence/` para PostgreSQL, `services/` para casos de uso y `routes/` para la API. La idea es que cada parte tenga una responsabilidad clara y pueda probarse de forma aislada.
 
 ## 4. Plan de construcción
 
@@ -203,6 +221,7 @@ En cada avance se añadirá una fila con el error encontrado, la corrección sol
 |---|---|---|---|---|
 | 2026-11-26 | Reconocimiento inicial | Revisar archivos del proyecto. | Solo existían `contexto.md` y `requisitos.md`; no había código ni Git inicializado. | Crear la base del proyecto en el siguiente paso. |
 | 2026-11-26 | Verificación del entorno | Comprobar Java, Git, Docker, Gradle Wrapper y Git. | Git y el repositorio existen; no están disponibles Java, Docker ni Gradle Wrapper. | Instalar/activar JDK 21 antes de generar y ejecutar Ktor. |
+| 2026-11-26 | Esqueleto Ktor | Crear la base modular con configuración, ruta de salud y frontend estático mínimo. | Archivos generados; ejecución pendiente por falta de JDK 21. | Instalar JDK, generar el wrapper y ejecutar `gradlew.bat run`. |
 
 ## 11. Commits y pushes
 
