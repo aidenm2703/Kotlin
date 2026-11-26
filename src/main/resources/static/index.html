@@ -1,15 +1,12 @@
 <!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservas de laboratorio</title>
-</head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>LabReserve</title><link rel="stylesheet" href="/styles.css"></head>
 <body>
-    <main>
-        <h1>Reservas de laboratorio</h1>
-        <p>La base del sistema está lista. El siguiente paso será conectar los laboratorios y las reservas.</p>
-    </main>
-</body>
-</html>
-
+<header class="topbar"><div><span class="logo">LR</span><strong>LabReserve</strong><small>Gestión de laboratorios</small></div><button id="themeButton" class="icon-button">☾</button></header>
+<div id="toast" class="toast"></div><main class="layout">
+<nav class="tabs"><button class="tab active" data-screen="dashboard">Panel</button><button class="tab" data-screen="reservations">Reservas</button><button class="tab" data-screen="laboratories">Laboratorios</button></nav>
+<section id="dashboard" class="screen active"><div class="heading"><div><p class="eyebrow">Vista general</p><h1>Panel</h1><p class="muted">Resumen de la actividad de los laboratorios.</p></div><button class="primary" data-screen-target="reservations">+ Nueva reserva</button></div><div class="cards"><article><span>Laboratorios</span><b id="labsCount">-</b><small>espacios registrados</small></article><article><span>Reservas hoy</span><b id="todayCount">-</b><small>activas para hoy</small></article><article><span>Disponibles</span><b id="availableCount">-</b><small>sin reserva hoy</small></article><article><span>Ocupación</span><b id="occupancy">-%</b><small>estimación del día</small></article></div><div class="panel"><div class="panel-title"><h2>Próximos días</h2><button class="link-button" data-screen-target="reservations">Ver todas</button></div><div id="weekList" class="week-list"></div></div></section>
+<section id="reservations" class="screen"><div class="heading"><div><p class="eyebrow">Agenda</p><h1>Reservas</h1><p class="muted">Consulta, crea y cancela reservas sin cruces de horario.</p></div><button id="newReservationButton" class="primary">+ Nueva reserva</button></div><div class="filters"><input id="reservationSearch" placeholder="Buscar por responsable o motivo"><input id="reservationDate" type="date"><select id="reservationStatus"><option value="">Todos los estados</option><option value="CONFIRMED">Confirmadas</option><option value="CANCELLED">Canceladas</option></select></div><div class="panel table-wrap"><table><thead><tr><th>Laboratorio</th><th>Responsable</th><th>Fecha</th><th>Horario</th><th>Motivo</th><th>Estado</th><th></th></tr></thead><tbody id="reservationsTable"></tbody></table><div id="reservationsEmpty" class="empty hidden">No hay reservas que coincidan con los filtros.</div></div></section>
+<section id="laboratories" class="screen"><div class="heading"><div><p class="eyebrow">Catálogo</p><h1>Laboratorios</h1><p class="muted">Administra espacios, capacidad y equipo disponible.</p></div><button id="newLabButton" class="primary">+ Nuevo laboratorio</button></div><div class="panel table-wrap"><table><thead><tr><th>Laboratorio</th><th>Capacidad</th><th>Ubicación</th><th>Equipo</th><th></th></tr></thead><tbody id="labsTable"></tbody></table></div></section></main>
+<dialog id="reservationDialog"><form id="reservationForm"><div class="dialog-head"><h2>Nueva reserva</h2><button type="button" class="close" data-close>×</button></div><label>Laboratorio<select name="laboratoryId" id="labSelect" required></select></label><label>Responsable<input name="responsible" required></label><div class="form-row"><label>Fecha<input name="date" type="date" required></label><label>Inicio<input name="startTime" type="time" required></label><label>Fin<input name="endTime" type="time" required></label></div><label>Motivo<textarea name="reason" required></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-close>Cancelar</button><button class="primary">Guardar reserva</button></div></form></dialog>
+<dialog id="labDialog"><form id="labForm"><div class="dialog-head"><h2>Nuevo laboratorio</h2><button type="button" class="close" data-close>×</button></div><label>Nombre<input name="name" required></label><div class="form-row"><label>Capacidad<input name="capacity" type="number" min="1" required></label><label>Color<input name="color" type="color" value="#6C63FF" required></label></div><label>Ubicación<input name="location" required></label><label>Equipo disponible<textarea name="equipment"></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-close>Cancelar</button><button class="primary">Guardar laboratorio</button></div></form></dialog><script src="/app.js"></script></body></html>

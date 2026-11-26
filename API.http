@@ -1,0 +1,11 @@
+### Salud
+GET http://localhost:8080/api/health
+
+### Laboratorios
+GET http://localhost:8080/api/laboratorios
+
+### Reservas
+GET http://localhost:8080/api/reservas
+
+### Panel
+GET http://localhost:8080/api/dashboard

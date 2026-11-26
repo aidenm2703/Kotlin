@@ -1,6 +1,7 @@
 package com.aidenmontero.reservas.config
 
 import io.ktor.server.application.Application
+import io.ktor.server.application.install
 import io.ktor.server.plugins.calllogging.CallLogging
 import io.ktor.server.plugins.statuspages.StatusPages
 import io.ktor.server.response.respondText
@@ -13,7 +14,7 @@ fun Application.configureMonitoring() {
 
     install(StatusPages) {
         exception<Throwable> { call, cause ->
-            log.error("Error no controlado en la solicitud", cause)
+            call.application.environment.log.error("Error no controlado en la solicitud", cause)
             call.respondText("Ocurrió un error interno.")
         }
     }

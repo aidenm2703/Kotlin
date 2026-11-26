@@ -257,7 +257,46 @@ Commit publicado: `3adf831` en la rama `main`.
 
 Antes del commit se confirmará que no aparece `.env` ni ningún secreto.
 
-## 12. Pendientes para la entrega
+## 12. Avance funcional completado
+
+Se generaron y probaron los módulos principales:
+
+- `domain/model`: modelos serializables de laboratorios, reservas, errores y panel.
+- `domain/validation`: reglas de campos obligatorios, fechas, horas y solapamientos.
+- `persistence`: repositorios en memoria para demo y repositorios JDBC para PostgreSQL.
+- `service`: casos de uso de laboratorios y reservas.
+- `routes/ApiRoutes.kt`: API REST de laboratorios, reservas, panel y salud.
+- `static/index.html`, `static/styles.css`, `static/app.js`: tres pantallas, filtros, formularios, toasts, confirmaciones, responsive y tema oscuro/claro.
+- `Dockerfile`, `.dockerignore`, `README.md` y `API.http`: empaquetado, documentación y pruebas manuales.
+
+La aplicación usa memoria cuando no existe `DATABASE_URL`; cuando esa variable existe, inicializa PostgreSQL y crea las tablas necesarias. Esto permite probar la interfaz sin exponer credenciales y usar Neon en el despliegue real.
+
+## 13. Registro actualizado de entorno y pruebas
+
+| Fecha | Prueba | Resultado |
+|---|---|---|
+| 2026-11-26 | `java -version` | JDK 21 LTS disponible y reconocido por PowerShell. |
+| 2026-11-26 | `docker --version` | Docker 29.9.3 disponible. |
+| 2026-11-26 | `gradlew.bat test` | Correcto: salud HTTP y rechazo de reserva solapada. |
+| 2026-11-26 | `gradlew.bat run` + `GET /api/health` | Correcto: HTTP 200 y JSON de salud. |
+| 2026-11-26 | `docker build -t labreserve:local .` | No concluyó por error del daemon local: `read-only file system`/caché BuildKit corrupta; debe reintentarse después de reiniciar Docker Desktop. |
+
+## 14. Matriz honesta de requisitos
+
+| Grupo | Estado local | Nota |
+|---|---|---|
+| RF1–RF3 | Cumplido en código | Crear, listar, editar y cancelar reservas; el frontend usa crear/cancelar y la API también expone editar. |
+| RF4 | Implementado, pendiente validar con Neon | JDBC y esquema PostgreSQL están listos; falta configurar una base real. |
+| RF5–RF10 | Cumplidos en código | Tres pantallas, panel, filtros, CRUD de laboratorios, estados y validaciones. |
+| RF11 | Opcional pendiente | No se implementó exportación CSV porque no es obligatoria. |
+| RD-UI1–RD-UI7 | Implementado localmente | Falta revisión visual final en navegador y prueba móvil formal. |
+| RD-UI8 | Cumplido | Frontend HTML/CSS/JavaScript servido por Ktor. |
+| RT1–RT6 | Cumplido localmente | Stack, variables, Dockerfile y API REST están documentados. |
+| RG1–RG7 | Parcial | Hay repositorio público, historial y commits previos; este avance aún debe commitirse y publicarse. |
+| RP1–RP5 | Pendiente externo | Faltan cuentas/configuración de Neon y Render, URL pública y prueba sobre esa URL. |
+| Entregables | Parcial | README y bitácora existen; faltan ficha de investigación, reflexión, demo y URL pública. |
+
+## 15. Pendientes para la entrega
 
 - URL pública funcionando.
 - Repositorio público con historial comprensible.
