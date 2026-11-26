@@ -21,6 +21,7 @@ Reglas principales:
 | Área | Decisión | Motivo |
 |---|---|---|
 | Lenguaje | Kotlin | Lenguaje JVM moderno, seguro frente a muchos errores de valores nulos y adecuado para backend. |
+
 | Framework web | Ktor | Framework ligero de Kotlin para crear servidores y APIs. |
 | Base de datos | PostgreSQL en Neon | Persistencia para que los datos sobrevivan a reinicios y despliegues. |
 | Hosting | Render | Publicación de la aplicación mediante Docker. |
@@ -37,7 +38,9 @@ Reglas principales:
 - [ ] Confirmar con el docente que Kotlin no se enseña en la carrera.
 - [ ] Registrar el stack con el docente.
 - [ ] Crear el proyecto base de Ktor y verificar que arranca.
-- [ ] Crear el repositorio público y hacer el primer push.
+- [x] Confirmar el repositorio público, crear el primer commit y hacer push a `main`.
+- [ ] Instalar o activar JDK 21; Java no está disponible actualmente en la terminal.
+- [ ] Instalar Docker Desktop; Docker no está disponible actualmente en la terminal.
 - [ ] Implementar laboratorios y reservas.
 - [ ] Implementar validación de choques.
 - [ ] Crear las tres pantallas y sus estados visuales.
@@ -190,6 +193,7 @@ La aplicación leerá `DATABASE_URL` desde variables de entorno. Se incluirá un
 |---|---|---|---|---|---|---|---|---|
 | 1 | 2026-11-26 | Codex | Preparación | Revisar `contexto.md` y `requisitos.md`, explicar el alcance y comenzar sin inventar requisitos. | Se confirmó el alcance, las restricciones y que aún no había código. | Sí | Los documentos son la fuente de verdad. | `docs: crea bitácora y guía del proyecto` |
 | 2 | 2026-11-26 | Codex | Documentación | Crear una bitácora Markdown con herramientas, extensiones, commits, pruebas y explicaciones de Kotlin/Ktor. | Se creó este documento. | Pendiente de verificar en Git | La documentación debe avanzar junto con el código. | `docs: crea bitácora y guía del proyecto` |
+| 3 | 2026-11-26 | PowerShell/Git | Verificación | Comprobar herramientas y publicar el primer avance. | Git existe, el repositorio está en `main` y el commit `3adf831` fue publicado; Java y Docker no están disponibles aún. | Parcial | No se puede ejecutar Gradle/Ktor hasta tener JDK. | `docs: registra estado del entorno inicial` |
 
 En cada avance se añadirá una fila con el error encontrado, la corrección solicitada a la IA y la prueba ejecutada.
 
@@ -198,6 +202,7 @@ En cada avance se añadirá una fila con el error encontrado, la corrección sol
 | Fecha | Prueba | Procedimiento | Resultado | Corrección |
 |---|---|---|---|---|
 | 2026-11-26 | Reconocimiento inicial | Revisar archivos del proyecto. | Solo existían `contexto.md` y `requisitos.md`; no había código ni Git inicializado. | Crear la base del proyecto en el siguiente paso. |
+| 2026-11-26 | Verificación del entorno | Comprobar Java, Git, Docker, Gradle Wrapper y Git. | Git y el repositorio existen; no están disponibles Java, Docker ni Gradle Wrapper. | Instalar/activar JDK 21 antes de generar y ejecutar Ktor. |
 
 ## 11. Commits y pushes
 
@@ -215,6 +220,8 @@ Mensaje sugerido para este avance documental:
 ```text
 docs: crea bitácora y guía del proyecto
 ```
+
+Commit publicado: `3adf831` en la rama `main`.
 
 Antes del commit se confirmará que no aparece `.env` ni ningún secreto.
 
